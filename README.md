@@ -176,3 +176,45 @@ ax.yaxis.set_major_formatter(PercentFormatter(decimals=0))
 To identify the highest-paying roles and skills, I only got jobs in the United States and looked at their median salary. But first I looked at the salary distributions of common data jobs like Data Scientist, Data Engineer, and Data Analyst, to get an idea of which jobs are paid the most. 
 
 View my notebook with detailed steps here: [4_Salary_Analysis](Project/4_Salary_Analysis.ipynb).
+
+### Visualize Data :
+```python 
+sns.boxplot(data=df_US_top6, y='job_title_short', x='salary_year_avg' , order=job_order)
+plt.title('Salary Distributions For Top Jobs in US')
+plt.xlabel('Salary in USD')
+plt.ylabel('')
+
+ax = plt.gca()
+ax.xaxis.set_major_formatter(mtick.FuncFormatter(lambda x,_:f'${int(x/1000)}K'))
+sns.despine()
+plt.xlim(0,600000)
+
+```
+#### Results
+
+![Salary Distributions of Data Jobs in the US](Project/images/Skill_Analysis.png)  
+*Box plot visualizing the salary distributions for the top 6 data job titles.*
+
+## Insights From the Chart :
+
+Here’s a short and clear summary of the salary distribution chart:
+
+1) Senior Data Scientist earns the highest overall; wide salary range with many high-end outliers.
+
+2) Senior Data Engineer and Data Scientist also have high median salaries, close to Senior Data Scientist.
+
+3) Data Engineer has similar spread to Data Scientist but slightly lower median.
+
+4) Senior Data Analyst earns more than Data Analyst, but both have lower salaries compared to engineering and science roles.
+
+5) Data Analyst has the lowest median salary and the narrowest range.
+
+### Overall Insight:
+
+#### Technical and engineering roles (especially senior ones) command significantly higher salaries than analyst roles in the US.
+
+### Highest Paid & Most Demanded Skills for Data Analysts
+
+Next, I narrowed my analysis and focused only on data analyst roles. I looked at the highest-paid skills and the most in-demand skills. I used two bar charts to showcase these.
+
+#### Visualize Data
