@@ -126,3 +126,53 @@ To find how skills are trending in 2023 for Data Analysts, I filtered data analy
 
 View my notebook with detailed steps here: [3_Skills_Trend](Project/3_Skills_Trend.ipynb).
 
+### Visualize Data :
+
+```python
+
+from matplotlib.ticker import PercentFormatter
+final_df = final_df.reindex(["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"])
+
+
+sns.lineplot(data=final_df, legend=False, dashes=False, palette='tab10')
+sns.set_theme(style='ticks')
+plt.xticks(['January','April','July','October'])
+plt.title('Job Trend In 2023 For US Data Analyst')
+plt.xlabel('2023')
+plt.ylabel('Likelihood in Job Postings')
+for i in range(5):
+    plt.text(0, final_df.iloc[0, i] , final_df.columns[i])
+sns.despine()
+ax=plt.gca()
+ax.yaxis.set_major_formatter(PercentFormatter(decimals=0)) 
+```
+
+### Results:
+
+![Trending Top Skills for Data Analysts in the US](Project\images\Skill_Trend.png)  
+*Line chart visualizing the trending top skills for data analysts in the US in 2023.*
+
+## Insights From the Chart :
+
+1) SQL: Most in-demand skill; steady decline from ~55% to ~46% but remains dominant.
+
+2) Excel: Consistently second; drops sharply in late 2023 (~43% to ~34%).
+
+3) Python: Gradually rising; peaks mid-year, ends slightly lower (~27%).
+
+4) Tableau: Stable demand (~28–30%), slight dip in Q4.
+
+5) SAS: Least demanded; steady decline (~22% to ~19%).
+
+###  Overall:
+
+1) Modern tools (SQL, Python) preferred over legacy ones (Excel, SAS).
+
+2) Shift toward coding and automation skills in data analyst roles.
+
+## 3. How well do jobs and skills pay for Data Analysts?
+
+To identify the highest-paying roles and skills, I only got jobs in the United States and looked at their median salary. But first I looked at the salary distributions of common data jobs like Data Scientist, Data Engineer, and Data Analyst, to get an idea of which jobs are paid the most. 
+
+View my notebook with detailed steps here: [4_Salary_Analysis](Project\4_Salary_Analysis.ipynb).
